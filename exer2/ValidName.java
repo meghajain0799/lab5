@@ -23,23 +23,27 @@ public class ValidName extends Exception {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		String firstName = "Megha ";
-		String lastName = " ";
+		System.out.println("Enter first name");
+		String firstName = sc.nextLine();
+
+		System.out.println("Enter last name");
+		String lastName = sc.nextLine();
 
 		boolean status = true;
 		try {
 
-			if (firstName.equals(" ") || lastName.equals(" ")) {
+			if (!(firstName.length()==0 || lastName.length()==0)) {
 
-				status = false;
+				status = true;
+				System.out.println("Your Name:" + firstName + " " + lastName);
+			} else {
 				throw new ValidName(firstName, lastName);
 			}
 
 		} catch (ValidName e) {
 			System.out.println(e);
 		}
-		if (status)
-			System.out.println("Your Name:" + firstName + " " + lastName);
+
 		sc.close();
 
 	}
